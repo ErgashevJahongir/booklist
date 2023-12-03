@@ -82,7 +82,7 @@ export default function MainPage() {
                                 Create a book
                             </Button>
                         </DialogTrigger>
-                        <DialogContent className="my-auto gap-0 rounded-xl">
+                        <DialogContent className="my-auto gap-0 rounded-xl md:h-auto">
                             <DialogHeader className="mb-[28px]">
                                 <DialogTitle className="text-lg font-semibold md:text-xl">
                                     Are you sure absolutely sure?
@@ -90,7 +90,7 @@ export default function MainPage() {
                             </DialogHeader>
                             <Form {...form}>
                                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                                    <div className="h-[520px] overflow-y-auto px-1">
+                                    <div className="h-[400px] overflow-y-auto px-1 md:h-[520px]">
                                         <div>
                                             <FormField
                                                 control={form.control}
