@@ -1,4 +1,6 @@
-import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+import { useNavigate, Outlet } from "react-router-dom"
+import { useAuthStore } from "@/hooks/useAuthStore"
 import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
@@ -10,16 +12,23 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { Outlet } from "react-router-dom"
 import avatar from "../assets/avatar.png"
 import useWindowWidth from "@/hooks/useWindowWidth"
 
 export default function Layout() {
     const navigate = useNavigate()
     const width = useWindowWidth()
+    const { user } = useAuthStore(state => state)
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login")
+        }
+    }, [navigate, user])
 
     const handleLogOut = () => {
-        localStorage.removeItem("DONATION-TREE-USER-TOKEN")
+        localStorage.removeItem("Book-list-user")
+        localStorage.removeItem("Book-list")
         setTimeout(() => {
             window.location.reload()
         }, 500)
@@ -89,11 +98,10 @@ export default function Layout() {
                                 />
                             </svg>
                         )}
-
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button
-                                    className="gap-2 bg-transparent px-0 py-1 focus-visible:ring-transparent md:py-2"
+                                    className="gap-2 bg-transparent px-0 py-1 hover:bg-transparent focus-visible:ring-transparent md:py-2"
                                     title="Profil">
                                     <img
                                         className="h-8 w-8 rounded-full"
