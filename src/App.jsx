@@ -1,10 +1,22 @@
+import { lazy } from "react"
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import Login from "./pages/Login"
-import MainPage from "./pages/MainPage"
-import ErrorPage from "./pages/ErrorPage"
 import Layout from "./layout"
-import Register from "./pages/Register"
-import Error404 from "./pages/Error404"
+
+const Login = lazy(() => {
+    return import("./pages/Login")
+})
+const MainPage = lazy(() => {
+    return import("./pages/MainPage")
+})
+const Register = lazy(() => {
+    return import("./pages/Register")
+})
+const Error404 = lazy(() => {
+    return import("./pages/Error404")
+})
+const ErrorPage = lazy(() => {
+    return import("./pages/ErrorPage")
+})
 
 const router = createBrowserRouter([
     {
