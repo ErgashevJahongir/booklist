@@ -28,7 +28,6 @@ export default function Layout() {
 
     const handleLogOut = () => {
         localStorage.removeItem("Book-list-user")
-        localStorage.removeItem("Book-list")
         setTimeout(() => {
             window.location.reload()
         }, 500)
@@ -62,8 +61,13 @@ export default function Layout() {
                             </h3>
                         </div>
                         <Input
+                            type="text"
                             className="hidden w-60 border-transparent bg-transparent text-white ring-offset-transparent placeholder:text-gray-300 focus-visible:bg-white focus-visible:text-[#151515] focus-visible:ring-transparent focus-visible:placeholder:text-gray-500 sm:block"
                             placeholder="Search for any training you want"
+                            onChange={event => {
+                                event.preventDefault()
+                                console.log(event)
+                            }}
                         />
                     </div>
                     <div className="flex items-center gap-4 md:gap-6">

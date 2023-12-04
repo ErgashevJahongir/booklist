@@ -8,7 +8,7 @@ export const useAuthStore = create(
             setUser: user => set(state => ({ ...state, user })),
         }),
         {
-            name: "Book-list",
+            name: "Book-list-user",
             storage: createJSONStorage(() => localStorage),
         },
     ),

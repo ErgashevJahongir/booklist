@@ -40,8 +40,10 @@ export default function Register() {
         onSuccess: data => {
             if (data.isOk) {
                 setUser(data.data)
-                localStorage.setItem("Book-list-user", JSON.stringify(data?.data))
-                localStorage.setItem("Book-list", JSON.stringify({ state: { user: data?.data } }))
+                localStorage.setItem(
+                    "Book-list-user",
+                    JSON.stringify({ state: { user: data?.data } }),
+                )
             } else {
                 toast({
                     variant: "destructive",
